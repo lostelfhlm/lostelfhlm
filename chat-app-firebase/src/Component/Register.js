@@ -56,6 +56,7 @@ export const Register = () => {
         uid: result.user.uid,
         name,
         email,
+        friends: [],
         createAt: Timestamp.fromDate(new Date()),
         isOnline: true
       })

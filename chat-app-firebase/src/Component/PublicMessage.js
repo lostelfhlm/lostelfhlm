@@ -6,7 +6,7 @@ import Moment from 'react-moment'
 
 
 
-export const PublicMessage = ({ name, text, time, avatar, selected, uid }) => {
+export const PublicMessage = ({ name, text, time, avatar, selected, uid, choseUser }) => {
 
 
 
@@ -27,7 +27,7 @@ export const PublicMessage = ({ name, text, time, avatar, selected, uid }) => {
         </div>
       </div>
 
-      <div className='public_message'>
+      <div className='public_message' onClick={() => choseUser(uid, text, { time: time.toDate() })}>
         <p>
           {text}
         </p>

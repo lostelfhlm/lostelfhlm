@@ -17,7 +17,7 @@ export const User = ({ user, selector, localUserUid }) => {
   }, [])
 
   return (
-    <div className={`user_wrapper ${user.name === user.name && 'selected_user'}`} onClick={() => selector(user)}>
+    <div className={`user_wrapper ${user.name === user.name && 'selected_user'}`} onClick={() => selector(user.uid)}>
       <div className='user_info'>
         <div className='user_detail'>
           <img src={user.avatar || defaultimg} alt='avatar' className='avatar' />

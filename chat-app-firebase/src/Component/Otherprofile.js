@@ -4,7 +4,7 @@ import defaultimg from '../5152.jpg'
 import { Close } from './svg/Close'
 
 
-export const Otherprofile = ({ otherUser }) => {
+export const Otherprofile = ({ otherUser, choseUser }) => {
 
   const [isactive, setIsactive] = useState(true)
 
@@ -49,7 +49,7 @@ export const Otherprofile = ({ otherUser }) => {
 
       </div>
       <div className='Send_otherUser'>
-        <button className='btn'>Send message</button>
+        <button className='btn' onClick={() => choseUser(otherUser.uid)}>Send message</button>
       </div>
 
 
