@@ -12,6 +12,7 @@ import {
   setDoc,
   doc,
   arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore'
 import { auth, db, storage } from '../firebase'
 import { User } from './User'
@@ -21,6 +22,7 @@ import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import { Message } from './Message'
 import { useHref, useLocation } from 'react-router-dom'
 import { async } from '@firebase/util'
+import { Close } from './svg/Close'
 export const Home = () => {
   const [users, setUsers] = useState([])
   const { authinfo } = useSelector((state) => state)
@@ -121,7 +123,23 @@ export const Home = () => {
     }
   }, [newfriend])
 
+  const handleDelete = async (user) => {
+    setChatUser('')
+    if (user && localUserUid) {
+      await updateDoc(doc(db, 'users', user), {
+        friends: arrayRemove(localUserUid),
+      })
+      await updateDoc(doc(db, 'users', localUserUid), {
+        friends: arrayRemove(user),
+      })
+
+
+    }
+
+  }
+
   const addfriend = async (user) => {
+
     if (user && localUserUid) {
       await updateDoc(doc(db, 'users', user), {
         friends: arrayUnion(localUserUid),
@@ -188,6 +206,17 @@ export const Home = () => {
           <>
             <div className="messages_user">
               <h3>{chatuser.name}</h3>
+              <div className="user_delete">
+                <label
+                  onClick={() => {
+                    window.confirm(
+                      'Are you sure you want to delete this user?'
+                    ) && handleDelete(chatuser.uid)
+                  }}
+                >
+                  <Close />
+                </label>
+              </div>
             </div>
             <div className="messages">
               {tempMsg.text && chatuser.uid === tempMsg.uid && (

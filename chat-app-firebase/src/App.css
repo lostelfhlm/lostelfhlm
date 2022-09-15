@@ -156,6 +156,7 @@ section .form {
   border: 1px solid var(--color-4);
 }
 .user_status {
+  justify-content: flex-end;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -166,6 +167,12 @@ section .form {
 .offline {
   background: var(--color-5);
 }
+
+.user_delete {
+  justify-content: flex-end;
+  display: flex;
+}
+
 .messages_container {
   position: relative;
   width: 100%;
