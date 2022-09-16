@@ -142,10 +142,12 @@ export const Home = () => {
 
     if (user && localUserUid) {
       await updateDoc(doc(db, 'users', user), {
-        friends: arrayUnion(localUserUid),
-      })
+        friends: arrayUnion(localUserUid)
+      },
 
-      setNewfriend('')
+      )
+
+
     }
   }
 
@@ -197,6 +199,8 @@ export const Home = () => {
               user={user}
               selector={selector}
               localUserUid={localUserUid}
+              setNewfriend={setNewfriend}
+              newfriend={newfriend}
             />
           ))
           : null}

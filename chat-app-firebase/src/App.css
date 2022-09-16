@@ -269,14 +269,18 @@ section .form {
   background: var(--color-6);
 }
 .truncate {
+  display: flex;
   font-size: 14px;
   white-space: nowrap;
-  width: 90%;
+
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .truncate strong {
   margin-right: 10px;
+}
+.truncate small {
+  margin-left: auto;
 }
 .unread {
   margin-left: 10px;
