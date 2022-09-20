@@ -5,16 +5,19 @@ import { auth, db } from '../firebase'
 import { setDoc, doc, Timestamp } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import OtherAuth from './OtherAuth'
 export const Register = () => {
 
   const [data, setData] = useState({
     name: '',
     email: '',
     password: '',
+    repetpsw:'',
     error: null,
     loading: false
   })
-  const { name, email, password, error, loading } = data
+  const { name, email, password, error, loading ,repetpsw} = data
 
   const navigate = useNavigate()
   const { authinfo } = useSelector(state => state)
@@ -47,7 +50,12 @@ export const Register = () => {
         ...data,
         error: 'ALL fields are required'
       })
-    }
+    }else if (password!== repetpsw) {
+      setData({
+        ...data,
+        error: 'Please check your password, two password must be same'
+      })
+      }
     try {
       const result = await createUserWithEmailAndPassword(
         auth, email, password
@@ -93,11 +101,25 @@ export const Register = () => {
           <label htmlFor='password' >Password</label>
           <input type='password' name='password' value={password} onChange={handleChange}></input>
         </div>
+        <div className='input_container'>
+          <label htmlFor='password' >Password</label>
+          <input type='password' name='repetpsw' value={repetpsw} onChange={handleChange}></input>
+        </div>
+        <Link to='/login'>Already had a count? Click  here sign in</Link>
+    
         {error ? <p className='error'>{error}</p> : null}
         <div className='btn_container'>
           <button className='btn' disabled={loading}>{loading ? 'is Creating...' : 'Register'}</button>
-        </div>
-      </form>
+        </div> 
+        </form>
+         <hr />
+         <h3>or</h3>
+<div className='other_container'>
+            
+           <OtherAuth />
+</div>
+
+      
     </section>
   )
 }

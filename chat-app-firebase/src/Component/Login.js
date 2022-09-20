@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import { updateDoc, doc } from 'firebase/firestore'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import OtherAuth from './OtherAuth'
 export const Login = () => {
 
   const [data, setData] = useState({
@@ -88,11 +88,18 @@ export const Login = () => {
           <label htmlFor='password' >Password</label>
           <input type='password' name='password' value={password} onChange={handleChange}></input>
         </div>
+        <Link to='/register'>Don't have a count? Click  here to sign up</Link>
         {error ? <p className='error'>{error}</p> : null}
         <div className='btn_container'>
           <button className='btn' disabled={loading}>{loading ? 'is Logging in...' : 'Login'}</button>
         </div>
       </form>
+      <hr />
+      <h3>or</h3>
+<div className='other_container'>
+            
+           <OtherAuth />
+</div>
     </section>
   )
 }

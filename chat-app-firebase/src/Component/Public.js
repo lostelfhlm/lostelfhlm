@@ -71,7 +71,7 @@ export const Public = () => {
       setPubmsg(messages)
 
     })
-
+    return ()=>   unsubscribe()
   }
 
   const selected = (uid) => {

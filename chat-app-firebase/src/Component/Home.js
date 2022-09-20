@@ -55,9 +55,10 @@ export const Home = () => {
         })
         setUsers(users)
 
+
         const resMsgRef = collection(db, 'lastmessage')
         const q = query(resMsgRef, where('to', '==', authinfo.userinfo.uid))
-        onSnapshot(q, (querySnapshot) => {
+       onSnapshot(q, (querySnapshot) => {
           let mes
           querySnapshot.forEach((doc) => {
             mes = doc.data()
@@ -68,8 +69,16 @@ export const Home = () => {
         })
       })
       return () => unsub()
+    
     }
   }, [authinfo])
+
+  
+
+
+
+
+
 
   const selector = (user) => {
     users.forEach((item) => {
@@ -80,8 +89,11 @@ export const Home = () => {
   }
 
   useEffect(() => {
+   
     const getmsg = async () => {
-      const otherUserUid = chatuser.uid
+    
+         
+     const otherUserUid = chatuser.uid
       const id =
         localUserUid > otherUserUid
           ? `${localUserUid + otherUserUid}`
@@ -100,10 +112,15 @@ export const Home = () => {
         await updateDoc(doc(db, 'lastmessage', id), {
           unread: false,
         })
-      }
+      
     }
+      }
+   
 
+
+if (chatuser ) {
     getmsg()
+   } 
   }, [chatuser])
 
   useEffect(() => {
