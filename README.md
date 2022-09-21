@@ -1,10 +1,9 @@
-- 👋 Hi, I’m @lostelfhlm
-- 👀 I’m interested in Frontend.
-- 🌱 I’m currently learning javascript and react
-- 💞️ I’m looking to collaborate on some open source project.
-- 📫 My email is lostelfhlm@gmail.com. Please feel free to contact me. 
+this is a chat-app using react and firebase.
 
-<!---
-lostelfhlm/lostelfhlm is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+User can send message to the public space and others can see it .
+
+If other user who want to chat with this user, they click the text or open they profile and click 'send message'.
+
+If a user clicked a public message , then he can add the user to his friend list, by clicking the friend , he can chat with that user by send text or images.
+
+If users recieved messages come from others , he will see his friend list add a new user , and 'new' will appear to the friend containter.
