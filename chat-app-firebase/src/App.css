@@ -137,6 +137,34 @@ section .form {
   text-align: left;
 }
 
+.Profile_container{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+}
+.pencil_icon{
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: auto;
+
+}
+.info_input {
+  text-align: center;
+}
+.info_input textarea{
+  resize: none;
+}
+.info_input > button{
+  margin-top: 5px;
+  margin-right: 10px;
+}
+.introduction{
+  text-align: center;
+ 
+  word-wrap:break-word;
+  color: var(--color-6);
+}
+
 .home_container {
   position: relative;
   display: grid;
@@ -186,10 +214,7 @@ section .form {
   background: var(--color-5);
 }
 
-.user_delete {
-  justify-content: flex-end;
-  display: flex;
-}
+
 
 .messages_container {
   position: relative;
@@ -199,6 +224,25 @@ section .form {
   padding: 10px;
   text-align: center;
   border-bottom: 2px solid var(--color-6);
+}
+.messages_head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.messages_name{
+  margin-left:45%;
+}
+.messages_Info:hover {
+  transform: scale(1.1);
+}
+.user_delete {
+margin-left: auto;
+}
+.user_delete:hover {
+  transform: scale(1.1);
 }
 .no_conv {
   font-size: 20px;

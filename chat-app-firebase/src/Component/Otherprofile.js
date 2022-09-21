@@ -4,7 +4,7 @@ import defaultimg from '../5152.jpg'
 import { Close } from './svg/Close'
 
 
-export const Otherprofile = ({ otherUser, choseUser }) => {
+export const Otherprofile = ({ otherUser, choseUser ,setOpenProfile,messageButton}) => {
 
   const [isactive, setIsactive] = useState(true)
 
@@ -22,7 +22,10 @@ export const Otherprofile = ({ otherUser, choseUser }) => {
   const handleout = () => {
 
     setIsactive(false)
-
+    if (setOpenProfile) {
+      setOpenProfile(false)
+    }
+    
 
   }
 
@@ -43,14 +46,21 @@ export const Otherprofile = ({ otherUser, choseUser }) => {
       </div >
       <div className='otherUser_text'>
         <h3>{otherUser.name}</h3>
-        <p>{otherUser.email}</p>
+
         <hr />
         <small>Joined on: {otherUser.createAt.toDate().toDateString()}</small>
-
+        <>
+              <p className="introduction">
+                { otherUser.introduction &&  otherUser.introduction  }
+                </p>
+            </>
       </div>
-      <div className='Send_otherUser'>
+      {!messageButton  && <div className='Send_otherUser'>
         <button className='btn' onClick={() => choseUser(otherUser.uid)}>Send message</button>
       </div>
+        
+      }
+     
 
 
     </section >

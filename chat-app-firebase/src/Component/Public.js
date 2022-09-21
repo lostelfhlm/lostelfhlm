@@ -45,19 +45,13 @@ export const Public = () => {
         }
       })
     }
-    // const q = query(citiesRef,
-    //   where('regions', 'array-contains-any', ['west_coast', 'east_coast']));
 
     const q = query(
       collection(db, 'publicmessages'),
       orderBy('createAt', 'desc'),
     )
 
-    // const pubRef = collection(db, 'publicmessages')
-    // const q = query(pubRef,
-    //   where('uid', '!=', [user.uid]),
-    //   orderBy('createAt', 'desc')
-    // )
+
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let messages = []

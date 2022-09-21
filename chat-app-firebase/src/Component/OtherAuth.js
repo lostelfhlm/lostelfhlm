@@ -95,13 +95,17 @@ const OtherAuth = () => {
   };
 
   return (
-    <>
+<>
+ <hr />
+    <h3>or</h3>
+    <div className='other_container'>
       <div>
         <GoogleButton onClick={handleGoogle} />
       </div>
       <div>
           <img src={yahooBtn} className='btn_Yahoo' onClick={handleYahoo}></img>
       </div>
+    </div>
     </>
   );
 };

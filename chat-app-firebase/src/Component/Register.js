@@ -112,12 +112,9 @@ export const Register = () => {
           <button className='btn' disabled={loading}>{loading ? 'is Creating...' : 'Register'}</button>
         </div> 
         </form>
-         <hr />
-         <h3>or</h3>
-<div className='other_container'>
-            
+
            <OtherAuth />
-</div>
+
 
       
     </section>

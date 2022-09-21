@@ -4,7 +4,8 @@ import { doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import defaultimg from '../5152.jpg'
 import Moment from 'react-moment'
-export const User = ({ user, selector, localUserUid, newfriend, setNewfriend }) => {
+import { Otherprofile } from './Otherprofile'
+export const User = ({ user, selector, localUserUid, newfriend, setNewfriend ,OpenInfo}) => {
   const otherUserUid = user.uid
   const [lastmsg, setLastmsg] = useState('')
 
@@ -40,12 +41,14 @@ export const User = ({ user, selector, localUserUid, newfriend, setNewfriend }) 
     <div
       className={`user_wrapper ${user.name === user.name && 'selected_user'}`}
       onClick={() => selector(user.uid)}>
+         
       <div className="user_info">
         <div className="user_detail">
           <img
             src={user.avatar || defaultimg}
             alt="avatar"
             className="avatar"
+            onClick={()=>OpenInfo(user)}
           />
           <h4>{user.name}</h4>
           {lastmsg?.from !== localUserUid && lastmsg?.unread && (
