@@ -260,7 +260,8 @@ margin-left: auto;
 }
 
 .img {
-  position: relative;
+
+position: relative;
 }
 .picture_num {
   background: rgb(255, 89, 50);
@@ -275,6 +276,22 @@ margin-left: auto;
   display: flex;
 }
 
+.emoji_container{
+  z-index: 2;
+  position: relative;
+}
+.emoji {
+  position: absolute;
+  }
+.emoji-picker-react{
+ 
+position: absolute;
+bottom:200px;
+
+}
+.emoji-picker-react section{
+  margin-top:0;
+}
 .message_form input {
   width: 40vw;
   margin: 0px 10px 10px;
@@ -289,11 +306,13 @@ margin-left: auto;
 .messages {
   height: calc(100vh - 200px);
   overflow-y: auto;
+
   border-bottom: 1px solid var(--color-6);
 }
 .message_wrapper {
   margin-top: 5px;
   padding: 0px 5px;
+  word-wrap:break-word;
 }
 .message_wrapper img {
   width: 100%;

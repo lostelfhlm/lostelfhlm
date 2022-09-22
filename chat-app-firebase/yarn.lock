@@ -3742,7 +3742,7 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
 
 crypto-js@^3.1.9-1:
   version "3.3.0"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  resolved "https://registry.npmjs.org/crypto-js/-/crypto-js-3.3.0.tgz"
   integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
 
 crypto-random-string@^2.0.0:
@@ -4244,6 +4244,11 @@ emittery@^0.8.1:
   version "0.8.1"
   resolved "https://registry.npmjs.org/emittery/-/emittery-0.8.1.tgz"
   integrity sha512-uDfvUjVrfGJJhymx/kz6prltenw1u7WrCg1oa94zYY8xxVpLLUu045LAT0dhDZdXG58/EpPL/5kA180fQ/qudg==
+
+emoji-picker-react@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/emoji-picker-react/-/emoji-picker-react-3.6.2.tgz#e414971bf9421b0825484f3b82623fef995c3c4b"
+  integrity sha512-PK3dfljGxeyN8fDz2FAsDYKPYGgo6/tkRyzJjLVaw0fksJg7jA3OJPIlHq2IIzTmlC/NKhcI/oaf0uEo5azYGA==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -7929,6 +7934,11 @@ react-google-button@^0.7.2:
   dependencies:
     prop-types "^15.7.2"
 
+react-icons@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
+  integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -8038,7 +8048,7 @@ react-scripts@5.0.1:
 
 react-twitter-login@^1.5.0:
   version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-twitter-login/-/react-twitter-login-1.5.0.tgz#09903d4b216268f26ca0cfb696fa011fb91281a1"
+  resolved "https://registry.npmjs.org/react-twitter-login/-/react-twitter-login-1.5.0.tgz"
   integrity sha512-onS9dwZ+07+4mMi+2xh6w0KPgY6jkWEfVVom5RCzAolGkDKWTvEMIutkAm1s6O7QtFmam+mpKoMBF8Lwam5iKA==
   dependencies:
     crypto-js "^3.1.9-1"
