@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword,sendEmailVerification } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import { setDoc, doc, Timestamp } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
@@ -60,6 +60,12 @@ export const Register = () => {
       const result = await createUserWithEmailAndPassword(
         auth, email, password
       )
+      auth.languageCode = 'JA';
+      sendEmailVerification(auth.currentUser)
+  .then(() => {
+    // Email verification sent!
+    // ...
+  });
       await setDoc(doc(db, 'users', result.user.uid), {
         uid: result.user.uid,
         name,

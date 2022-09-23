@@ -85,7 +85,7 @@ export const Public = () => {
 
   const choseUser = async (uid, text, time) => {
 
-    naviagate('/', {
+    naviagate('/personal', {
       state: {
         chosed: uid,
         text,

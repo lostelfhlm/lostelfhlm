@@ -22,11 +22,12 @@ export const Login = () => {
 
   useEffect(() => {
 
-    if (authinfo.isLogin) {
+    if (auth.currentUser) {
       navigate('/', { replace: true })
+      
     }
 
-  }, [authinfo])
+  }, [])
 
 
 
@@ -88,11 +89,15 @@ export const Login = () => {
           <label htmlFor='password' >Password</label>
           <input type='password' name='password' value={password} onChange={handleChange}></input>
         </div>
-        <Link to='/register'>Don't have a count? Click  here to sign up</Link>
+        <div>
+          <Link to='/ResetPassword'>Forget your password ? </Link>
+        </div>
+        
         {error ? <p className='error'>{error}</p> : null}
         <div className='btn_container'>
           <button className='btn' disabled={loading}>{loading ? 'is Logging in...' : 'Login'}</button>
         </div>
+        <Link to='/register'>Don't have a count? Click  here to sign up</Link>
       </form>
 
            <OtherAuth />

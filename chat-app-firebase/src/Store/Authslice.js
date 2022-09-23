@@ -5,6 +5,7 @@ const AuthSlice = createSlice({
   initialState: {
     name: '',
     isLogin: true,
+    emailVerified:false,
     userinfo: ''
   },
   reducers: {
@@ -16,11 +17,14 @@ const AuthSlice = createSlice({
     },
     setuserinfo (state, action) {
       state.userinfo = action.payload
+    },
+    setemailVerified(state,action){
+      state.emailVerified=action.payload
     }
   }
 
 })
 
-export const { setname, setisLogin, setuserinfo } = AuthSlice.actions
+export const { setname, setisLogin, setuserinfo ,setemailVerified} = AuthSlice.actions
 
 export const { reducer: AuthReducer } = AuthSlice

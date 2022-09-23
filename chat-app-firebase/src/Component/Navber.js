@@ -26,12 +26,16 @@ export const Navber = () => {
 
   return (
     <nav>
+            <h3>
+        <Link to='/'>Home</Link>
+      </h3>
       <h3>
-        <Link to='/'>Messenger</Link>
+        <Link to='/personal'>Messenger</Link>
       </h3>
       <h3>
         <Link to='public'>Public</Link>
       </h3>
+
       <div>
         {authinfo.isLogin ? (
           <>

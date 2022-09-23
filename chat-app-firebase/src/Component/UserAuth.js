@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { onAuthStateChanged,Unsubscribe } from 'firebase/auth'
-import { setname, setisLogin, setuserinfo } from '../Store/Authslice'
+import { setname, setisLogin, setuserinfo,setemailVerified } from '../Store/Authslice'
 import { useDispatch } from 'react-redux'
 import { auth } from '../firebase'
 
@@ -22,6 +22,8 @@ export const UserAuth = () => {
 
         dispatch(setuserinfo(user))
         dispatch(setisLogin(true))
+        // dispatch(setemailVerified(true))
+        // console.log(user);
       } else {
         dispatch(setisLogin(false))
       }
