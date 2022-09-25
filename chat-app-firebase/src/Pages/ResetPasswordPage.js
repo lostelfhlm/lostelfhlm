@@ -45,7 +45,7 @@ sendPasswordResetEmail(auth, email)
       
      
       <div className='btn_container'>
-        <button className='btn' >{ 'Login'}</button>
+        <button className='btn' >{ 'Confirm'}</button>
       </div>
       
     </form>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { auth, db } from '../firebase'
+import {  db } from '../firebase'
 import {
   addDoc,
   collection,
@@ -9,9 +9,7 @@ import {
   orderBy,
   query,
   onSnapshot,
-  where,
-  collectionGroup,
-  getDocs
+
 } from 'firebase/firestore'
 import { useSelector } from 'react-redux'
 
@@ -23,12 +21,12 @@ import { useNavigate } from 'react-router-dom'
 
 export const Public = () => {
   const [user, setUser] = useState([])
-  const [message, setMessage] = useState('')
-  const [chatmessage, setChatmessage] = useState('')
+
   const { authinfo } = useSelector((state) => state)
   const [text, setText] = useState('')
   const [pubmsg, setPubmsg] = useState('')
   const [otherUser, setOtherUser] = useState('')
+  const [isSend,setIsSend]=useState(false)
   const naviagate = useNavigate()
   useEffect(() => {
     if (authinfo.userinfo.uid) {
@@ -114,12 +112,22 @@ export const Public = () => {
         createAt: Timestamp.fromDate(new Date()),
       })
       setText('')
+      messageSuccess()
     }
   }
 
+  const messageSuccess=()=>{
+    setIsSend(true)
+    setTimeout(()=>{
+      setIsSend(false)
+    },2000)
+ 
+  }
+
+
   return (
-    <div className="home_container">
-      <div className="users_container">123123123213</div>
+    <div className="public_container">
+      <div className="public_sider">Send message to everbody, and then click others to start a chat!</div>
       <div className="messages_container">
         <Otherprofile otherUser={otherUser} choseUser={choseUser} />
         <div className="public_head">
@@ -129,6 +137,7 @@ export const Public = () => {
         </div>
 
         <div className="messages_box">
+          <div className={isSend? 'messages_success':'messages_notsend'}>メッセージは成功に送りました！</div>
           <div className="messages">
             {pubmsg &&
               pubmsg.map((item, index) =>

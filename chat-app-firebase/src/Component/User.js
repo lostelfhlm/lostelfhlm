@@ -50,6 +50,7 @@ export const User = ({ user, selector, localUserUid, newfriend, setNewfriend ,Op
             className="avatar"
             onClick={()=>OpenInfo(user)}
           />
+          
           <h4>{user.name}</h4>
           {lastmsg?.from !== localUserUid && lastmsg?.unread && (
             <small className="unread">New</small>

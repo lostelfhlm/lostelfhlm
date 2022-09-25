@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import defaultimg from "../5152.jpg";
 import {
   collection,
   query,
@@ -20,11 +21,10 @@ import { useSelector } from "react-redux";
 import { MessageForm } from "./MessageForm";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { Message } from "./Message";
-import { useHref, useLocation } from "react-router-dom";
-import { async } from "@firebase/util";
+import {  useLocation } from "react-router-dom";
 import { Close } from "./svg/Close";
-import Identification from "./svg/Identification";
 import { Otherprofile } from "./Otherprofile";
+import Chevronleft from "./svg/Chevronleft";
 export const Personal = () => {
   const [users, setUsers] = useState([]);
   const { authinfo } = useSelector((state) => state);
@@ -214,14 +214,24 @@ export const Personal = () => {
             <div className="messages_user">
               <div className="messages_head">
                 
+                <label className="Chevronleft" onClick={()=>setChatUser("")}>
+                   <Chevronleft />
+                </label>
+           
+
                 <div className="messages_name">
-                  <h3>{chatuser.name}</h3>
+  <img
+            src={chatuser.avatar||defaultimg}
+            alt="avatar"
+            className="avatar"
+            onClick={()=>OpenInfo(chatuser)}
+          />
+
+                  <h3 onClick={() => OpenInfo(chatuser)}>{chatuser.name}</h3>
                 </div>
                 
                 
-                  <label className="messages_Info" onClick={() => OpenInfo(chatuser)}>
-                    <Identification />
-                  </label>
+
                 
 
                 <div className="user_delete">
@@ -247,6 +257,7 @@ export const Personal = () => {
                       localUserUid={localUserUid}
                       key={index}
                       msg={item}
+                      
                     />
                   ))
                 : null}

@@ -31,10 +31,12 @@ export const Message = ({ msg, localUserUid, tempMsg }) => {
     )
     :
     (
-
+<>
       <div className={`message_wrapper ${msg.from === localUserUid ? 'own' : ''}`}
         ref={scrollRef}>
+  
         <p className={msg.from === localUserUid ? 'me' : 'friend'}>
+          
           {msg.media ? msg.media.map((url) => <img src={url} className={clickImg ? 'clicked' : ''} alt={url} key={url} onClick={handleImg} />) : null}
           {msg.text}
           <br />
@@ -43,5 +45,7 @@ export const Message = ({ msg, localUserUid, tempMsg }) => {
           </small>
         </p>
       </div>
+     
+      </>
     )
 }

@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import {
   getAuth,
-
   OAuthProvider,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
 import GoogleButton from "react-google-button";
 import { auth, db } from "../firebase";
-import yahooBtn from './button/Rectangle Primary.png'
+import yahooBtn from "./button/Rectangle Primary.png";
 import { useSelector } from "react-redux";
 
 import { setDoc, doc, Timestamp, getDoc, updateDoc } from "firebase/firestore";
-
 
 const OtherAuth = () => {
   const { authinfo } = useSelector((state) => state);
@@ -95,17 +93,17 @@ const OtherAuth = () => {
   };
 
   return (
-<>
- <hr />
-    <h3>or</h3>
-    <div className='other_container'>
-      <div>
-        <GoogleButton onClick={handleGoogle} />
+    <>
+      <hr />
+      <h2>or</h2>
+      <div className="other_container">
+        <div>
+          <GoogleButton onClick={handleGoogle} />
+        </div>
+        <div >
+          <img src={yahooBtn} className="btn_Yahoo" onClick={handleYahoo}></img>
+        </div>
       </div>
-      <div>
-          <img src={yahooBtn} className='btn_Yahoo' onClick={handleYahoo}></img>
-      </div>
-    </div>
     </>
   );
 };

@@ -23,7 +23,7 @@ export const Register = () => {
   const { authinfo } = useSelector(state => state)
   useEffect(() => {
 
-    if (authinfo.isLogin) {
+    if (auth.currentUser) {
       navigate('/', { replace: true })
     }
 
@@ -93,7 +93,7 @@ export const Register = () => {
 
   return (
     <section>
-      <h3>Create an Account</h3>
+      <h2>Create an Account</h2>
       <form className='form' onSubmit={handleSubmit}>
         <div className='input_container'>
           <label htmlFor='name'>Name</label>

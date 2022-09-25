@@ -27,7 +27,7 @@ export const Login = () => {
       
     }
 
-  }, [])
+  }, [authinfo])
 
 
 
@@ -78,7 +78,7 @@ export const Login = () => {
 
   return (
     <section>
-      <h3>Login into your Account</h3>
+      <h2>Login into your Account</h2>
       <form className='form' onSubmit={handleSubmit}>
 
         <div className='input_container'>
