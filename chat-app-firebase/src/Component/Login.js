@@ -77,7 +77,7 @@ export const Login = () => {
   }
 
   return (
-    <section>
+    <section className='register_login'>
       <h2>Login into your Account</h2>
       <form className='form' onSubmit={handleSubmit}>
 

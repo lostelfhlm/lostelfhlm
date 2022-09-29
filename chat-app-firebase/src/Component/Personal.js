@@ -192,7 +192,7 @@ export const Personal = () => {
     setOpenProfile(!openProfile);
   };
   return (
-    <div className="home_container">
+    <div className="personal_container">
       <div className="users_container">
         {users
           ? users.map((user) => (

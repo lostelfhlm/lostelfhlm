@@ -95,7 +95,7 @@ const OtherAuth = () => {
   return (
     <>
       <hr />
-      <h2>or</h2>
+      
       <div className="other_container">
         <div>
           <GoogleButton onClick={handleGoogle} />

@@ -92,7 +92,7 @@ export const Register = () => {
   }
 
   return (
-    <section>
+    <section className='register_login'>
       <h2>Create an Account</h2>
       <form className='form' onSubmit={handleSubmit}>
         <div className='input_container'>
