@@ -2,6 +2,7 @@ import { onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { doc, orderBy, query, collection } from 'firebase/firestore'
 import { db } from '../firebase'
+import defaultimg from "../5152.jpg"
 import Moment from 'react-moment'
 
 
@@ -16,7 +17,7 @@ export const PublicMessage = ({ name, text, time, avatar, selected, uid, choseUs
     <div  >
 
       <div className='public_detail'>
-        <img src={avatar} alt='avatar' className='avatar' onClick={() => selected(uid)} />
+        <img src={avatar ? avatar : defaultimg} alt='avatar' className='avatar' onClick={() => selected(uid)} />
 
         <h4 onClick={() => selected(uid)}>{name}</h4>
 

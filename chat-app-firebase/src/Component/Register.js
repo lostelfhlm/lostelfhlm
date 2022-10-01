@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { createUserWithEmailAndPassword,sendEmailVerification } from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import { setDoc, doc, Timestamp } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
@@ -13,18 +13,18 @@ export const Register = () => {
     name: '',
     email: '',
     password: '',
-    repetpsw:'',
+    repetpsw: '',
     error: null,
     loading: false
   })
-  const { name, email, password, error, loading ,repetpsw} = data
+  const { name, email, password, error, loading, repetpsw } = data
 
   const navigate = useNavigate()
   const { authinfo } = useSelector(state => state)
   useEffect(() => {
 
     if (auth.currentUser) {
-      navigate('/', { replace: true })
+      navigate('/public', { replace: true })
     }
 
   }, [authinfo])
@@ -50,22 +50,22 @@ export const Register = () => {
         ...data,
         error: 'ALL fields are required'
       })
-    }else if (password!== repetpsw) {
+    } else if (password !== repetpsw) {
       setData({
         ...data,
         error: 'Please check your password, two password must be same'
       })
-      }
+    }
     try {
       const result = await createUserWithEmailAndPassword(
         auth, email, password
       )
-      auth.languageCode = 'JA';
+      auth.languageCode = 'JA'
       sendEmailVerification(auth.currentUser)
-  .then(() => {
-    // Email verification sent!
-    // ...
-  });
+        .then(() => {
+          // Email verification sent!
+          // ...
+        })
       await setDoc(doc(db, 'users', result.user.uid), {
         uid: result.user.uid,
         name,
@@ -81,7 +81,7 @@ export const Register = () => {
         error: null,
         loading: false
       })
-      navigate('/', { replace: true })
+      navigate('/public', { replace: true })
     } catch (err) {
       setData({
         ...data,
@@ -112,17 +112,17 @@ export const Register = () => {
           <input type='password' name='repetpsw' value={repetpsw} onChange={handleChange}></input>
         </div>
         <Link to='/login'>Already had a count? Click  here sign in</Link>
-    
+
         {error ? <p className='error'>{error}</p> : null}
         <div className='btn_container'>
           <button className='btn' disabled={loading}>{loading ? 'is Creating...' : 'Register'}</button>
-        </div> 
-        </form>
+        </div>
+      </form>
 
-           <OtherAuth />
+      <OtherAuth />
 
 
-      
+
     </section>
   )
 }

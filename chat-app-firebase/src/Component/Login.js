@@ -23,8 +23,8 @@ export const Login = () => {
   useEffect(() => {
 
     if (auth.currentUser) {
-      navigate('/', { replace: true })
-      
+      navigate('/public', { replace: true })
+
     }
 
   }, [authinfo])
@@ -66,7 +66,7 @@ export const Login = () => {
         error: null,
         loading: false
       })
-      navigate('/', { replace: true })
+      navigate('/public', { replace: true })
     } catch (err) {
       setData({
         ...data,
@@ -92,7 +92,7 @@ export const Login = () => {
         <div>
           <Link to='/ResetPassword'>Forget your password ? </Link>
         </div>
-        
+
         {error ? <p className='error'>{error}</p> : null}
         <div className='btn_container'>
           <button className='btn' disabled={loading}>{loading ? 'is Logging in...' : 'Login'}</button>
@@ -100,7 +100,7 @@ export const Login = () => {
         <Link to='/register'>Don't have a count? Click  here to sign up</Link>
       </form>
 
-           <OtherAuth />
+      <OtherAuth />
 
     </section>
   )

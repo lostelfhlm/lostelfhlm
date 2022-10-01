@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  db } from '../firebase'
+import { db } from '../firebase'
 import {
   addDoc,
   collection,
@@ -26,7 +26,7 @@ export const Public = () => {
   const [text, setText] = useState('')
   const [pubmsg, setPubmsg] = useState('')
   const [otherUser, setOtherUser] = useState('')
-  const [isSend,setIsSend]=useState(false)
+  const [isSend, setIsSend] = useState(false)
   const naviagate = useNavigate()
   useEffect(() => {
     if (authinfo.userinfo.uid) {
@@ -63,7 +63,7 @@ export const Public = () => {
       setPubmsg(messages)
 
     })
-    return ()=>   unsubscribe()
+    return () => unsubscribe()
   }
 
   const selected = (uid) => {
@@ -94,7 +94,7 @@ export const Public = () => {
 
 
   }
-  // need add default avatar url 
+
   const sendMessage = async (e) => {
     e.preventDefault()
     if (text === '') {
@@ -108,7 +108,7 @@ export const Public = () => {
         text,
         name,
         uid,
-        avatar,
+        avatar: avatar || null,
         createAt: Timestamp.fromDate(new Date()),
       })
       setText('')
@@ -116,12 +116,12 @@ export const Public = () => {
     }
   }
 
-  const messageSuccess=()=>{
+  const messageSuccess = () => {
     setIsSend(true)
-    setTimeout(()=>{
+    setTimeout(() => {
       setIsSend(false)
-    },2000)
- 
+    }, 2000)
+
   }
 
 
@@ -137,7 +137,7 @@ export const Public = () => {
         </div>
 
         <div className="messages_box">
-          <div className={isSend? 'messages_success':'messages_notsend'}>メッセージは成功に送りました！</div>
+          <div className={isSend ? 'messages_success' : 'messages_notsend'}>メッセージは成功に送りました！</div>
           <div className="messages">
             {pubmsg &&
               pubmsg.map((item, index) =>
