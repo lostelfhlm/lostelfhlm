@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
-import defaultimg from "../5152.jpg";
-import { Close } from "./svg/Close";
+import defaultimg from "../assets/avatar-default.png"
+import { Close } from "./svg/Close"
 
 export const Otherprofile = ({
   otherUser,
@@ -9,18 +9,18 @@ export const Otherprofile = ({
   setOpenProfile,
   messageButton,
 }) => {
-  const [isactive, setIsactive] = useState(true);
+  const [isactive, setIsactive] = useState(true)
 
   useEffect(() => {
-    setIsactive(true);
-  }, [otherUser]);
+    setIsactive(true)
+  }, [otherUser])
 
   const handleout = () => {
-    setIsactive(false);
+    setIsactive(false)
     if (setOpenProfile) {
-      setOpenProfile(false);
+      setOpenProfile(false)
     }
-  };
+  }
 
   return otherUser ? (
     <section className={isactive ? "otherUser_profile" : "Roll_out"}>
@@ -53,5 +53,5 @@ export const Otherprofile = ({
         </div>
       )}
     </section>
-  ) : null;
-};
+  ) : null
+}

@@ -2,10 +2,10 @@ import { onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { doc } from 'firebase/firestore'
 import { db } from '../firebase'
-import defaultimg from '../5152.jpg'
+import defaultimg from "../assets/avatar-default.png"
 import Moment from 'react-moment'
 import { Otherprofile } from './Otherprofile'
-export const User = ({ user, selector, localUserUid, newfriend, setNewfriend ,OpenInfo}) => {
+export const User = ({ user, selector, localUserUid, newfriend, setNewfriend, OpenInfo }) => {
   const otherUserUid = user.uid
   const [lastmsg, setLastmsg] = useState('')
 
@@ -41,16 +41,16 @@ export const User = ({ user, selector, localUserUid, newfriend, setNewfriend ,Op
     <div
       className={`user_wrapper ${user.name === user.name && 'selected_user'}`}
       onClick={() => selector(user.uid)}>
-         
+
       <div className="user_info">
         <div className="user_detail">
           <img
             src={user.avatar || defaultimg}
             alt="avatar"
             className="avatar"
-            onClick={()=>OpenInfo(user)}
+            onClick={() => OpenInfo(user)}
           />
-          
+
           <h4>{user.name}</h4>
           {lastmsg?.from !== localUserUid && lastmsg?.unread && (
             <small className="unread">New</small>

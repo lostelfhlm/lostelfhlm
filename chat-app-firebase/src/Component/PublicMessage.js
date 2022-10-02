@@ -2,7 +2,7 @@ import { onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { doc, orderBy, query, collection } from 'firebase/firestore'
 import { db } from '../firebase'
-import defaultimg from "../5152.jpg"
+import defaultimg from "../assets/avatar-default.png"
 import Moment from 'react-moment'
 
 

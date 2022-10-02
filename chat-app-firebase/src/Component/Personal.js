@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import defaultimg from "../5152.jpg"
+import defaultimg from "../assets/avatar-default.png"
 import {
   collection,
   query,

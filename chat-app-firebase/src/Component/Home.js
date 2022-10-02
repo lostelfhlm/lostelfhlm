@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import { useNavigate } from "react-router-dom"
-
+import Logo from '../assets/logo/logo-no-background.png'
+import Step1 from '../assets/HomePic/step1.png'
+import Step2 from '../assets/HomePic/step2.jpg'
+import Step3 from '../assets/HomePic/step3.jpg'
 const Home = () => {
   const navigate = useNavigate()
   const [isLeave, setIsLeave] = useState(false)
@@ -19,8 +22,12 @@ const Home = () => {
     }, 500)
 
   }
-
-
+  const handleAbout = () => {
+    navigate('/about')
+  }
+  const handleContact = () => {
+    navigate('/contact')
+  }
 
 
 
@@ -42,7 +49,7 @@ const Home = () => {
         </div>
 
         <div className="home_step">
-          <div className="home_messages">
+          <div >
             <h2>step1,アカントを登録する</h2>
             <h3 className="step1_message" data-aos="fade-right">
               profileでニックネーム、アイコン、自己紹介を設定し、自分の個性をアピールしよう。
@@ -52,31 +59,37 @@ const Home = () => {
           <div>
             <h2>step2, みんなに一言メッセージを送る、話したい人をクリックする</h2>
             <h3 className="step2_message" data-aos="fade-right">
-              他の人のアイコンをクリックするとprofileが見られます、テキストをクリックするとメッセージを送ることは出来る。
+              他の人のアイコンをクリックするとprofileが見られます、テキストをクリックするとメッセージを送ることは出来ます。
             </h3>
           </div>
 
           <div>
             <h2> step3,クリックすると自動に友達登録するから、個別チャットを楽しましょう</h2>
             <h3 className="step3_message" data-aos="fade-right">
-              友達登録したあと、テキストだけではなく、写真、絵文字も送ることが出来る。
+              友達登録したあと、テキストだけではなく、写真、絵文字も送ることが出来ます。
             </h3>
           </div>
         </div>
 
-        <div className="demo_box">
-          <div className="demo" data-aos="fade-left">
-            demo1
+        <div className="step_box">
+          <div className="step" data-aos="fade-left">
+            <img src={Step1}></img>
           </div>
-          <div className="demo" data-aos="fade-left">
-            demo2
+          <div className="step" data-aos="fade-left">
+            <img src={Step2}></img>
           </div>
-          <div className="demo" data-aos="fade-left">
-            demo3
+          <div className="step" data-aos="fade-left">
+            <img src={Step3}></img>
           </div>
         </div>
 
-        <footer>footer</footer>
+        <footer>
+          <div >
+            <img src={Logo} className="logo"></img>
+          </div>
+          <div className="About" onClick={handleAbout}>About</div>
+          <div className="Contact" onClick={handleContact}>contact me</div>
+        </footer>
       </div>
     </div>
   )
