@@ -28,13 +28,14 @@ export const Public = () => {
   const [otherUser, setOtherUser] = useState('')
   const [isSend, setIsSend] = useState(false)
   const naviagate = useNavigate()
+  // get last public messages when refresh
   useEffect(() => {
     if (authinfo.userinfo.uid) {
       handlepublic()
     }
 
   }, [authinfo.userinfo])
-
+  // get last public messages
   const handlepublic = () => {
     if (authinfo.userinfo.uid) {
       getDoc(doc(db, 'users', authinfo.userinfo.uid)).then((docsnap) => {
@@ -66,6 +67,7 @@ export const Public = () => {
     return () => unsubscribe()
   }
 
+  // click a user to get the info 
   const selected = (uid) => {
     if (uid) {
       getDoc(doc(db, 'users', uid)).then((docsnap) => {
@@ -80,7 +82,7 @@ export const Public = () => {
       setOtherUser('')
     }
   }
-
+  // send the choseuser's info to /personal to add friend list
   const choseUser = async (uid, text, time) => {
 
     naviagate('/personal', {
@@ -95,6 +97,7 @@ export const Public = () => {
 
   }
 
+  // store public messages to firebase store
   const sendMessage = async (e) => {
     e.preventDefault()
     if (text === '') {
@@ -116,6 +119,7 @@ export const Public = () => {
     }
   }
 
+  // when user send a message, show the successfull box for 2s
   const messageSuccess = () => {
     setIsSend(true)
     setTimeout(() => {

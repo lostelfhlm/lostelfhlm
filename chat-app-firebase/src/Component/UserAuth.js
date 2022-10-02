@@ -1,44 +1,28 @@
 import React, { useEffect } from 'react'
-import { onAuthStateChanged,Unsubscribe } from 'firebase/auth'
-import { setname, setisLogin, setuserinfo,setemailVerified } from '../Store/Authslice'
+import { onAuthStateChanged } from 'firebase/auth'
+import {
+  setname,
+  setisLogin,
+  setuserinfo,
+} from '../Store/Authslice'
 import { useDispatch } from 'react-redux'
 import { auth } from '../firebase'
 
-
 export const UserAuth = () => {
-
   const dispatch = useDispatch()
 
-
-
   useEffect(() => {
- 
-
-
-    const unsubscribe= onAuthStateChanged(auth, (user) => {
-      // dispatch(setname(user.displayName || null))
+    // watch auth from firebase, if there is a user,store the userinfo to the redux
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        
-
         dispatch(setuserinfo(user))
         dispatch(setisLogin(true))
-        // dispatch(setemailVerified(true))
-        // console.log(user);
       } else {
         dispatch(setisLogin(false))
       }
-
-
-
     })
-    return ()=>  unsubscribe()
-    
-
-
+    return () => unsubscribe()
   }, [])
 
-
-  return (
-    <></>
-  )
+  return <></>
 }

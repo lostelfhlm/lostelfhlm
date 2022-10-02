@@ -17,23 +17,21 @@ import { ContactPage } from './Pages/ContactPage'
 function App () {
   return (
     <>
+
       <UserAuth />
       <Navber />
       <Routes>
-
+        {/* if newwlogin page is login,access to the children component, if is not login, redirect to /login */}
         <Route path='/register' element={<RegisterPage />}></Route>
         <Route path='/login' element={<LoginPage />}></Route>
         <Route path='/profile' element={<NeedLogin><Profile /></NeedLogin>}></Route>
-
-        <Route path='/public' element={<NeedLogin><PublicPage /></NeedLogin>}>   </Route>
-
-        <Route path='/personal' element={<NeedLogin><PersonalPage /></NeedLogin>}>   </Route>
-        <Route path='/' element={<HomePage />}>   </Route>
-        <Route path='/about' element={<AboutPage />}>   </Route>
-        <Route path='/contact' element={<ContactPage />}>   </Route>
+        <Route path='/public' element={<NeedLogin><PublicPage /></NeedLogin>}></Route>
+        <Route path='/personal' element={<NeedLogin><PersonalPage /></NeedLogin>}></Route>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/about' element={<AboutPage />}></Route>
+        <Route path='/contact' element={<ContactPage />}></Route>
         <Route path='/verification' element={<VerificationPage />}></Route>
         <Route path='/ResetPassword' element={<ResetPasswordPage />}></Route>
-
       </Routes>
 
     </>

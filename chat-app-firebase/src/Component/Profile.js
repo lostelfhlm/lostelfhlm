@@ -37,6 +37,8 @@ export const Profile = () => {
     })
   }
 
+
+  // get current user's info , if user is upload a avatar, delete the pre avatar and set a new avatar url
   useEffect(() => {
     if (authinfo.userinfo.uid) {
       getDoc(doc(db, "users", authinfo.userinfo.uid)).then((docsnap) => {
@@ -72,6 +74,7 @@ export const Profile = () => {
     }
   }, [userimg, authinfo])
 
+  // if user click edit button , change the info box to input and value is equall to current value
   const handleUserName = (e) => {
     setIsEdit((pre) => {
       return { ...pre, name: true }
@@ -102,6 +105,8 @@ export const Profile = () => {
     })
   }
 
+
+  // change current user's name
   const handleNameChange = () => {
     setError('')
     if (name !== '') {
@@ -119,7 +124,7 @@ export const Profile = () => {
     }
 
   }
-
+  // change current user's introduction
   const handleIntroChange = () => {
     updateDoc(doc(db, "users", user.uid), {
       introduction,

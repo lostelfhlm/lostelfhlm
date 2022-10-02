@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react"
-
-import defaultimg from "../assets/avatar-default.png"
-import { Close } from "./svg/Close"
+import React, { useEffect, useState } from 'react'
+import defaultimg from '../assets/avatar-default.png'
+import { Close } from './svg/Close'
 
 export const Otherprofile = ({
   otherUser,
@@ -11,10 +10,12 @@ export const Otherprofile = ({
 }) => {
   const [isactive, setIsactive] = useState(true)
 
+  // if otheruser is exist,show the profile
   useEffect(() => {
     setIsactive(true)
   }, [otherUser])
 
+  // click the close button to close profile
   const handleout = () => {
     setIsactive(false)
     if (setOpenProfile) {
@@ -23,7 +24,7 @@ export const Otherprofile = ({
   }
 
   return otherUser ? (
-    <section className={isactive ? "otherUser_profile" : "Roll_out"}>
+    <section className={isactive ? 'otherUser_profile' : 'Roll_out'}>
       <div className="profile_close">
         <label onClick={handleout}>
           <Close />

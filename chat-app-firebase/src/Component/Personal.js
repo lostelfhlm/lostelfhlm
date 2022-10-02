@@ -43,6 +43,8 @@ export const Personal = () => {
     time: "",
   })
 
+  // get users who have the current user'uid 
+
   useEffect(() => {
     if (authinfo.userinfo) {
       const userRef = collection(db, "users")
@@ -58,6 +60,7 @@ export const Personal = () => {
         })
         setUsers(users)
 
+        // get users who send message to the current user and add them to current user's friend list
         const resMsgRef = collection(db, "lastmessage")
         const q = query(resMsgRef, where("to", "==", authinfo.userinfo.uid))
         onSnapshot(q, (querySnapshot) => {
@@ -74,6 +77,7 @@ export const Personal = () => {
     }
   }, [authinfo])
 
+  // chose a user to show it's message container
   const selector = (user) => {
     users.forEach((item) => {
       if (item.uid === user) {
@@ -82,6 +86,8 @@ export const Personal = () => {
     })
   }
 
+
+  // get messages which message uid is equal to current user'uid + chatuser's uid 
   useEffect(() => {
     const getmsg = async () => {
       const otherUserUid = chatuser.uid
@@ -98,6 +104,7 @@ export const Personal = () => {
         })
         setChatmessage(mes)
       })
+      // set the lastmessage to already read
       const docsnap = await getDoc(doc(db, "lastmessage", id))
       if (docsnap.data() && docsnap.data()?.from !== localUserUid) {
         await updateDoc(doc(db, "lastmessage", id), {
@@ -111,6 +118,7 @@ export const Personal = () => {
     }
   }, [chatuser])
 
+  // if personal receive a public user' info, add it to friend list and render to the user list
   useEffect(() => {
     if (!newfriend && location.state) {
       setNewfriend(location.state.chosed)
@@ -128,6 +136,10 @@ export const Personal = () => {
     }
   }, [newfriend])
 
+
+  //to delete friend , remove the current user's uid from other user's friend list ,and otheruser' uid from current user's friend list
+
+
   const handleDelete = async (user) => {
     setChatUser("")
     if (user && localUserUid) {
@@ -140,6 +152,7 @@ export const Personal = () => {
     }
   }
 
+  // add current user's uid to otheruser's friend list
   const addfriend = async (user) => {
     if (user && localUserUid) {
       await updateDoc(doc(db, "users", user), {
@@ -148,6 +161,7 @@ export const Personal = () => {
     }
   }
 
+  // if user click send button,store messages and images to the firebase store and set a lastmessage to unread
   const handleSubmit = async (e) => {
     e.preventDefault()
     const otherUserUid = chatuser.uid
@@ -187,10 +201,9 @@ export const Personal = () => {
     setChatimg("")
   }
 
-  console.log(users)
 
 
-
+  // click user's icon and name to open profile
   const OpenInfo = () => {
 
     setOpenProfile(!openProfile)
@@ -198,6 +211,7 @@ export const Personal = () => {
   return (
     <div className="personal_container">
       <div className={chatuser ? "users_close" : "users_container"} >
+        {/* get users from friend list and render it */}
         {users
           ? users.map((user) => (
             <User

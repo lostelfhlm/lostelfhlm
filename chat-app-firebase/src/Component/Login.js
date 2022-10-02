@@ -20,6 +20,10 @@ export const Login = () => {
 
   const { authinfo } = useSelector(state => state)
 
+
+
+  // if user islogin , redirect to /public
+
   useEffect(() => {
 
     if (auth.currentUser) {
@@ -40,6 +44,7 @@ export const Login = () => {
       [e.target.name]: e.target.value
     })
   }
+  // firebase login
   const handleSubmit = async (e) => {
     e.preventDefault()
     setData({

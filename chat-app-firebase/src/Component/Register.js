@@ -21,6 +21,8 @@ export const Register = () => {
 
   const navigate = useNavigate()
   const { authinfo } = useSelector(state => state)
+
+  // if user islogin , redirect to /public
   useEffect(() => {
 
     if (auth.currentUser) {
@@ -30,7 +32,7 @@ export const Register = () => {
   }, [authinfo])
 
 
-
+  // set input value to data
   const handleChange = (e) => {
 
     setData({
@@ -38,6 +40,7 @@ export const Register = () => {
       [e.target.name]: e.target.value
     })
   }
+  // use firebase auth  to signup 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setData({
@@ -63,9 +66,10 @@ export const Register = () => {
       auth.languageCode = 'JA'
       sendEmailVerification(auth.currentUser)
         .then(() => {
-          // Email verification sent!
-          // ...
+          // Email verification sent
+
         })
+      // if is successful, set user's info 
       await setDoc(doc(db, 'users', result.user.uid), {
         uid: result.user.uid,
         name,

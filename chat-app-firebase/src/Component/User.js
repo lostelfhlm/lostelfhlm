@@ -2,13 +2,20 @@ import { onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { doc } from 'firebase/firestore'
 import { db } from '../firebase'
-import defaultimg from "../assets/avatar-default.png"
+import defaultimg from '../assets/avatar-default.png'
 import Moment from 'react-moment'
-import { Otherprofile } from './Otherprofile'
-export const User = ({ user, selector, localUserUid, newfriend, setNewfriend, OpenInfo }) => {
+export const User = ({
+  user,
+  selector,
+  localUserUid,
+  newfriend,
+  setNewfriend,
+  OpenInfo,
+}) => {
   const otherUserUid = user.uid
   const [lastmsg, setLastmsg] = useState('')
 
+  // get lastmessage to render it
   useEffect(() => {
     const id =
       localUserUid > otherUserUid
@@ -21,27 +28,18 @@ export const User = ({ user, selector, localUserUid, newfriend, setNewfriend, Op
     return () => unsub()
   }, [])
 
+  // if user click a public message , add it to user list and click it to show message container
   useEffect(() => {
-
     if (newfriend === otherUserUid) {
-
-
       selector(otherUserUid)
       setNewfriend('')
     }
-
-
-
   }, [])
-
-
-
 
   return (
     <div
       className={`user_wrapper ${user.name === user.name && 'selected_user'}`}
       onClick={() => selector(user.uid)}>
-
       <div className="user_info">
         <div className="user_detail">
           <img
@@ -66,8 +64,8 @@ export const User = ({ user, selector, localUserUid, newfriend, setNewfriend, Op
           <p className="truncate">
             <strong>{lastmsg.from === localUserUid ? 'Me:' : null}</strong>
             {lastmsg.text}
-            <small >
-              <Moment format='hh:mm:ss'>{lastmsg.time}</Moment>
+            <small>
+              <Moment format="hh:mm:ss">{lastmsg.time}</Moment>
             </small>
           </p>
         )}
