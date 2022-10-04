@@ -9,7 +9,7 @@ import {
   orderBy,
   query,
   onSnapshot,
-
+  limit
 } from 'firebase/firestore'
 import { useSelector } from 'react-redux'
 
@@ -17,7 +17,6 @@ import { PublicMessageForm } from './PublicMessageForm'
 import { PublicMessage } from './PublicMessage'
 import { Otherprofile } from './Otherprofile'
 import { useNavigate } from 'react-router-dom'
-
 
 export const Public = () => {
   const [user, setUser] = useState([])
@@ -33,9 +32,8 @@ export const Public = () => {
     if (authinfo.userinfo.uid) {
       handlepublic()
     }
-
   }, [authinfo.userinfo])
-  // get last public messages
+
   const handlepublic = () => {
     if (authinfo.userinfo.uid) {
       getDoc(doc(db, 'users', authinfo.userinfo.uid)).then((docsnap) => {
@@ -44,13 +42,11 @@ export const Public = () => {
         }
       })
     }
-
+    // get last 50 public messages
     const q = query(
       collection(db, 'publicmessages'),
-      orderBy('createAt', 'desc'),
+      orderBy('createAt', 'desc'), limit(50)
     )
-
-
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let messages = []
@@ -58,16 +54,14 @@ export const Public = () => {
         if (doc.data().uid !== authinfo.userinfo.uid) {
           messages.push(doc.data())
         }
-
       })
 
       setPubmsg(messages)
-
     })
     return () => unsubscribe()
   }
 
-  // click a user to get the info 
+  // click a user to get the info
   const selected = (uid) => {
     if (uid) {
       getDoc(doc(db, 'users', uid)).then((docsnap) => {
@@ -75,8 +69,6 @@ export const Public = () => {
           setOtherUser(docsnap.data())
         }
       })
-
-
     }
     if (otherUser) {
       setOtherUser('')
@@ -84,17 +76,13 @@ export const Public = () => {
   }
   // send the choseuser's info to /personal to add friend list
   const choseUser = async (uid, text, time) => {
-
     naviagate('/personal', {
       state: {
         chosed: uid,
         text,
-        time
-      }
+        time,
+      },
     })
-
-
-
   }
 
   // store public messages to firebase store
@@ -125,13 +113,13 @@ export const Public = () => {
     setTimeout(() => {
       setIsSend(false)
     }, 2000)
-
   }
-
 
   return (
     <div className="public_container">
-      <div className="public_sider">Send message to everbody, and then click others to start a chat!</div>
+      <div className="public_sider">
+        Send message to everbody, and then click others to start a chat!
+      </div>
       <div className="messages_container">
         <Otherprofile otherUser={otherUser} choseUser={choseUser} />
         <div className="public_head">
@@ -141,22 +129,23 @@ export const Public = () => {
         </div>
 
         <div className="messages_box">
-          <div className={isSend ? 'messages_success' : 'messages_notsend'}>メッセージは成功に送りました！</div>
+          <div className={isSend ? 'messages_success' : 'messages_notsend'}>
+            メッセージは成功に送りました！
+          </div>
           <div className="messages">
             {pubmsg &&
-              pubmsg.map((item, index) =>
-              (<PublicMessage
-                name={item.name}
-                uid={item.uid}
-                text={item.text}
-                avatar={item.avatar}
-                time={item.createAt}
-                choseUser={choseUser}
-                selected={selected}
-                key={index}
-              />
-              )
-              )}
+              pubmsg.map((item, index) => (
+                <PublicMessage
+                  name={item.name}
+                  uid={item.uid}
+                  text={item.text}
+                  avatar={item.avatar}
+                  time={item.createAt}
+                  choseUser={choseUser}
+                  selected={selected}
+                  key={index}
+                />
+              ))}
           </div>
           <PublicMessageForm
             sendMessage={sendMessage}
