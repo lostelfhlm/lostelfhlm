@@ -1,14 +1,14 @@
-# friendly
+# Friendly
 
-a responsive web application chat-app used with Html Css Javascript react redux and back end with firebase.
+A responsive web application chat-app used with Html Css Javascript react redux and back end with firebase.
 
-### :zap: [RUN HERE](https://chatapp-react-firebase-8b8ad.web.app/)
+### :zap: [Website HERE](https://chatapp-react-firebase-8b8ad.web.app/)
 
 ![screenshot](/chat-app-firebase/public/screenshot.png)
 
 - [About](#about)
 - [How To Run Locally](#how-to-run-locally)
-- [Bugs and update](#Bugs-and-update)
+- [Bugs And Update](#Bugs-and-update)
 
 ## About
 
@@ -33,7 +33,7 @@ It has main 5 pages,and user can sigin signup to send messages to other users, a
 - if user is login, the register and login buttion will hide and profile,logout buttion will show
 - made with firebase Authentication
 
-### profile page
+### Profile Page
 
 - if user is login, their default userinfo will store in firebase store and showed in profile page
 - user profile page will show user's avatar,name,email,createtime,introduction
@@ -41,7 +41,7 @@ It has main 5 pages,and user can sigin signup to send messages to other users, a
 - the email will only showed at profile page ,user can not see other user's email
 - the introduction have 400 words limit
 
-### public page
+### Public Page
 
 - user can see public messages sent by other users
 - click other user's avatar or name will show other's profile
@@ -49,7 +49,7 @@ It has main 5 pages,and user can sigin signup to send messages to other users, a
 - when user click newpublic message button or refrsh the page will get last 50 public messages from firbase store
 - when user send a public message , a successful box will show for 2s, and user can not see their own messages
 
-### personal page
+### Personal Page
 
 - user's friend will show the left and message box will show the right
 - click a user box will get private messages from firebase store and render it at message box
@@ -88,7 +88,7 @@ yarn start
 
 ```
 
-## Bugs and update at future
+## Bugs And Update Plan
 
 - when newfriend add to user's friend list , it can not add to the lastarry
 
