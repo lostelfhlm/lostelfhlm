@@ -8,7 +8,7 @@ A responsive web application chat-app used with Html Css Javascript react redux 
 
 - [About](#about)
 - [How To Run Locally](#how-to-run-locally)
-- [Bugs And Update Plan](#Bugs-and-update)
+- [Bugs And Update Plan](#Bugs-and-update-plan)
 
 ## About
 
