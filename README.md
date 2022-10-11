@@ -1,4 +1,4 @@
-Hi, I'm HE LUMING , I have 6 months experience of Front End and trying to get a Frontend job
+Hi, I'm HE LUMING , I have 6 months experience of Front End and Seeking to become a Front End Developer
 
 ## Here is what I can do
 
