@@ -8,15 +8,14 @@ export const ContactPage = () => {
   }
   return (
     <section>
-      <div className='Contact_container'>
-
+      <div className="Contact_container">
         <h2>Contact me</h2>
         <p> Email Address:lostelfhlm@gmail.com</p>
         <p>Please feel free to contact me</p>
-        <button className='btn' onClick={handleAbout}>About</button>
-
+        <button className="btn" onClick={handleAbout}>
+          About
+        </button>
       </div>
     </section>
-
   )
 }

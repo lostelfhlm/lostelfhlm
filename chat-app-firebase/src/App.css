@@ -807,6 +807,7 @@ section .form {
 
 .emoji_container {
   z-index: 2;
+
   margin: 0 20px;
   position: relative;
 }

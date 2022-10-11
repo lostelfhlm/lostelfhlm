@@ -1,8 +1,7 @@
 import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
 
-
-// use redux toolkit to store user's info 
+// use redux toolkit to store user's info
 
 const AuthSlice = createSlice({
   name: 'authinfo',
@@ -10,7 +9,7 @@ const AuthSlice = createSlice({
     name: '',
     isLogin: true,
     emailVerified: false,
-    userinfo: ''
+    userinfo: '',
   },
   reducers: {
     setname (state, action) {
@@ -24,11 +23,11 @@ const AuthSlice = createSlice({
     },
     setemailVerified (state, action) {
       state.emailVerified = action.payload
-    }
-  }
-
+    },
+  },
 })
 
-export const { setname, setisLogin, setuserinfo, setemailVerified } = AuthSlice.actions
+export const { setname, setisLogin, setuserinfo, setemailVerified } =
+  AuthSlice.actions
 
 export const { reducer: AuthReducer } = AuthSlice

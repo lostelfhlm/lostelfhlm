@@ -10,16 +10,19 @@ export const AboutPage = () => {
 
   return (
     <section>
-      <div className='About_container'>
+      <div className="About_container">
         <h2>About</h2>
-        <p>This is a freechat-app made by Html CSS Javascript React and firebase</p>
+        <p>
+          This is a freechat-app made by Html CSS Javascript React and firebase
+        </p>
         <p>If you have any advice please contact me</p>
-        <div >
+        <div>
           <img src={Logo} className="logo"></img>
         </div>
-        <button className='btn' onClick={handleContact}>contact me</button>
+        <button className="btn" onClick={handleContact}>
+          contact me
+        </button>
       </div>
     </section>
-
   )
 }

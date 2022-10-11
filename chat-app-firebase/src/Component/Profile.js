@@ -1,22 +1,22 @@
-import React, { useEffect } from "react"
-import defaultimg from "../assets/avatar-default.png"
-import Camera from "./svg/Cmaer"
-import { useState } from "react"
-import { getDoc, doc, updateDoc } from "firebase/firestore"
-import { auth, storage } from "../firebase"
-import { db } from "../firebase"
+import React, { useEffect } from 'react'
+import defaultimg from '../assets/avatar-default.png'
+import Camera from './svg/Cmaer'
+import { useState } from 'react'
+import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { auth, storage } from '../firebase'
+import { db } from '../firebase'
 
 import {
   ref,
   getDownloadURL,
   uploadBytes,
   deleteObject,
-} from "firebase/storage"
-import { useSelector } from "react-redux"
-import Pencil from "./svg/Pencil"
+} from 'firebase/storage'
+import { useSelector } from 'react-redux'
+import Pencil from './svg/Pencil'
 export const Profile = () => {
   const { authinfo } = useSelector((state) => state)
-  const [userimg, setUserimg] = useState("")
+  const [userimg, setUserimg] = useState('')
   const [user, setUser] = useState()
   const [isEdit, setIsEdit] = useState({
     name: false,
@@ -24,8 +24,8 @@ export const Profile = () => {
   })
 
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    introduction: "",
+    name: '',
+    introduction: '',
   })
   const [error, setError] = useState('')
   const { name, introduction } = userInfo
@@ -37,11 +37,10 @@ export const Profile = () => {
     })
   }
 
-
   // get current user's info , if user is upload a avatar, delete the pre avatar and set a new avatar url
   useEffect(() => {
     if (authinfo.userinfo.uid) {
-      getDoc(doc(db, "users", authinfo.userinfo.uid)).then((docsnap) => {
+      getDoc(doc(db, 'users', authinfo.userinfo.uid)).then((docsnap) => {
         if (docsnap.exists) {
           setUser(docsnap.data())
         }
@@ -62,7 +61,7 @@ export const Profile = () => {
 
           const url = await getDownloadURL(ref(storage, snap.ref.fullPath))
 
-          await updateDoc(doc(db, "users", auth.currentUser.uid), {
+          await updateDoc(doc(db, 'users', auth.currentUser.uid), {
             avatar: url,
             avatarPath: snap.ref.fullPath,
           })
@@ -99,18 +98,16 @@ export const Profile = () => {
     })
   }
   const handleIntroCancel = () => {
-
     setIsEdit((pre) => {
       return { ...pre, introduction: false }
     })
   }
 
-
   // change current user's name
   const handleNameChange = () => {
     setError('')
     if (name !== '') {
-      updateDoc(doc(db, "users", user.uid), {
+      updateDoc(doc(db, 'users', user.uid), {
         name,
       })
       setIsEdit((pre) => {
@@ -122,11 +119,10 @@ export const Profile = () => {
     } else {
       setError('The name should not be empty')
     }
-
   }
   // change current user's introduction
   const handleIntroChange = () => {
-    updateDoc(doc(db, "users", user.uid), {
+    updateDoc(doc(db, 'users', user.uid), {
       introduction,
     })
     setIsEdit((pre) => {
@@ -149,7 +145,7 @@ export const Profile = () => {
             <input
               type="file"
               accept="image/*"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               id="photo"
               onChange={(e) => setUserimg(e.target.files[0])}
             />
@@ -164,14 +160,12 @@ export const Profile = () => {
               <input
                 autoFocus
                 required
-                maxLength='20'
-                minLength='1'
-
+                maxLength="20"
+                minLength="1"
                 type="text"
                 name="name"
                 value={name}
-                onChange={handleChange}
-              ></input>
+                onChange={handleChange}></input>
 
               <button className="btn" onClick={handleNameChange}>
                 Change
@@ -179,15 +173,14 @@ export const Profile = () => {
               <button className="btn" onClick={handleNameCancel}>
                 Cancel
               </button>
-              {error ? <p className='error'>{error}</p> : null}
+              {error ? <p className="error">{error}</p> : null}
             </div>
           ) : (
             <>
               <h3>{user.name}</h3>
               <div
                 className="pencil_icon"
-                onClick={() => handleUserName(user.name)}
-              >
+                onClick={() => handleUserName(user.name)}>
                 <Pencil />
               </div>
             </>
@@ -204,13 +197,13 @@ export const Profile = () => {
               <textarea
                 autoFocus
                 required
-                rows="10" cols="50"
-                maxLength='400'
+                rows="10"
+                cols="50"
+                maxLength="400"
                 type="textarea"
                 name="introduction"
                 value={introduction}
-                onChange={handleChange}
-              ></textarea>
+                onChange={handleChange}></textarea>
               <button className="btn" onClick={handleIntroChange}>
                 Change
               </button>
@@ -221,15 +214,13 @@ export const Profile = () => {
           ) : (
             <>
               <p className="introduction">
-                {user.introduction ? user.introduction
-                  :
-                  'Please introduce Yourself'
-                }
+                {user.introduction
+                  ? user.introduction
+                  : 'Please introduce Yourself'}
               </p>
               <div
                 className="pencil_icon"
-                onClick={() => handleUserIntro(user.introduction)}
-              >
+                onClick={() => handleUserIntro(user.introduction)}>
                 <Pencil />
               </div>
             </>

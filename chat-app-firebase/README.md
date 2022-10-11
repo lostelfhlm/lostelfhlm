@@ -8,7 +8,7 @@ A responsive web application chat-app used with Html Css Javascript react redux 
 
 - [About](#about)
 - [How To Run Locally](#how-to-run-locally)
-- [Bugs And Update](#Bugs-and-update)
+- [Bugs And Update Plan](#Bugs-and-update)
 
 ## About
 
@@ -66,7 +66,7 @@ It has main 5 pages,and user can sigin signup to send messages to other users, a
 
 1. Clone this repo
 
-2. Run npm install
+2. Run yarn install
 
 Create .env file at root level of project and add REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN, REACT_APP_DATABASE_URL, REACT_APP_PROJECT_ID, REACT_APP_STORAGE_BUCKET, REACT_APP_MESSAGING_SENDER_ID, REACT_APP_APP_ID
 
