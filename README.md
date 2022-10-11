@@ -16,15 +16,15 @@ CSS3
 
 JavaScript(ES2015)
 
-JS Frameworks React
+JS Frameworks: React
 
-State container:Redux(RTK,RTQ)
+State container: Redux(RTK,RTQ)
 
-CSS Preprocessors : Scss
+CSS Preprocessors: Scss
 
 Version Control: Git
 
-Backend-as-a-Service:Firebase
+Backend-as-a-Service: Firebase
 
 Responsive Design & Mobile-First Websites
 
@@ -33,6 +33,8 @@ Responsive Design & Mobile-First Websites
 Node.js
 
 Npm
+
+Http
 
 Socket.io
 
