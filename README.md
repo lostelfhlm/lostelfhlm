@@ -2,34 +2,48 @@
 
 Here is what I can do
 
-Create web applications. [1]
-Bug fix, and problem solve.
+Create web applications. Bug fix, and problem solve.[1]
+
 Maintain, update, and improve existing websites. [2]
+
 Implement websites, landing pages, and applications from concept through deployment, with a responsive, mobile-first approach. [3]
 
 ## My Front End Developer Skills
 
 HTML/HTML5
+
 CSS3
+
 JavaScript(ES2015)
+
 JS Frameworks React
+
 State container:Redux(RTK,RTQ)
+
 CSS Preprocessors : Scss
+
 Version Control: Git
+
 Backend-as-a-Service:Firebase
+
 Responsive Design & Mobile-First Websites
 
 ## The basic knowledge of :
 
 Node.js
+
 Npm
+
 Socket.io
+
 MySql
+
 Webpack
 
 ## Language Skills:
 
 English (conversational)
+
 Japanese(Business)
 
 ## EDUCATION
