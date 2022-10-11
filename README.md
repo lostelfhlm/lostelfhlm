@@ -1,6 +1,6 @@
-## Hi, I'm HE LUMING , I have 6 months experience of Front End and trying to get a Frontend job
+Hi, I'm HE LUMING , I have 6 months experience of Front End and trying to get a Frontend job
 
-Here is what I can do
+## Here is what I can do
 
 Create web applications. Bug fix, and problem solve.[1]
 
@@ -49,7 +49,9 @@ Japanese(Business)
 ## EDUCATION
 
 Bachelor of sociology and business management in Kibi International University
+
 3.88 Overall GPA
+
 Awards:JASSO Scholarship
 
 Master of business management in Osaka Prefecture University in 2023/03
