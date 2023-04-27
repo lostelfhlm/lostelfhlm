@@ -1,4 +1,4 @@
-Hi, I'm HE LUMING , I have 6 months experience of Front End and Seeking to become a Front End Developer
+Hi, I'm HE LUMING , I have  1 year (6 months Intern) experience of Front End and I'm a  Web application Developer in japan.
 
 ## Here is what I can do
 
@@ -8,6 +8,8 @@ Maintain, update, and improve existing websites. [2]
 
 Implement websites, landing pages, and applications from concept through deployment, with a responsive, mobile-first approach. [3]
 
+mobile app front end markup, logic. [4]
+
 ## My Front End Developer Skills
 
 HTML/HTML5
@@ -15,6 +17,8 @@ HTML/HTML5
 CSS3
 
 JavaScript(ES2015)
+
+Flutter
 
 JS Frameworks: React
 
@@ -36,9 +40,9 @@ Npm
 
 Http
 
-Socket.io
+Sql
 
-MySql
+Linux
 
 Webpack
 
@@ -56,7 +60,7 @@ Bachelor of sociology and business management in Kibi International University
 
 Awards:JASSO Scholarship
 
-Master of business management in Osaka Prefecture University in 2023/03
+Master of business administration in Osaka Prefecture University in 2023/03
 
 ## ACHIEVEMENTS
 
