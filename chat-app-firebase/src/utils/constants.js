@@ -1,0 +1,3 @@
+export const PUBLIC_MESSAGE_LIMIT = 50;
+export const MESSAGE_SUCCESS_DURATION_MS = 2000;
+export const HOME_NAVIGATION_DELAY_MS = 500;

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import './App.css'
+import './styles/App.scss'
 import { Navber } from './Component/Navber'
 import { HomePage } from './Pages/HomePage'
 import { RegisterPage } from './Pages/RegisterPage'
