@@ -12,7 +12,7 @@ const VerificationPage = () => {
     })
     setSendEmail(true)
   }
-  // if user's emial is verifed , redirect to /
+  // if user's email is verified , redirect to /
   useEffect(() => {
     if (auth.currentUser) {
       auth.currentUser.emailVerified && navigate('/', { replace: true })
@@ -22,7 +22,7 @@ const VerificationPage = () => {
   return (
     <section>
       <div className="verify_container">
-        Please Verify your email. if you didn't recieve a email,Click
+        Please Verify your email. if you didn't receive a email,Click
         <button className="btn" onClick={handleVerification}>
           Verification
         </button>

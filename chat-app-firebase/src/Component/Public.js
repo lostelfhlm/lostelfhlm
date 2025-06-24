@@ -61,11 +61,11 @@ export const Public = () => {
       setOtherUser('')
     }
   }
-  // send the choseuser's info to /personal to add friend list
+  // send the chosen user's info to /personal to add friend list
   const choseUser = async (uid, text, time) => {
     naviagate('/personal', {
       state: {
-        chosed: uid,
+        selectedUid: uid,
         text,
         time,
       },
@@ -86,7 +86,7 @@ export const Public = () => {
     }
   }
 
-  // when user send a message, show the successfull box for 2s
+  // when user send a message, show the successful box for 2s
   const messageSuccess = () => {
     setIsSend(true)
     setTimeout(() => {
@@ -97,7 +97,7 @@ export const Public = () => {
   return (
     <div className="public_container">
       <div className="public_sider">
-        Send message to everbody, and then click others to start a chat!
+        Send message to everybody, and then click others to start a chat!
       </div>
       <div className="messages_container">
         <Otherprofile otherUser={otherUser} choseUser={choseUser} />

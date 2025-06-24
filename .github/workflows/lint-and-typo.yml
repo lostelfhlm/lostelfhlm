@@ -1,0 +1,33 @@
+name: Lint and Typo Check
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  lint-typo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: chat-app-firebase/package-lock.json
+
+      - name: Install dependencies
+        working-directory: chat-app-firebase
+        run: npm install
+
+      - name: Run ESLint
+        working-directory: chat-app-firebase
+        run: npx eslint . --ext .js,.jsx
+
+      - name: Install codespell
+        run: pip install codespell
+
+      - name: Check typos
+        run: codespell -S node_modules --skip "*.png,*.lock,*.json,*.svg,*.js.map"

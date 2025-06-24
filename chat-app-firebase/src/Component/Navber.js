@@ -50,7 +50,7 @@ export const Navber = () => {
         </NavLink>
       </h3>
 
-      {/* if islogin show the profie and logout,if not show login and register */}
+      {/* if islogin show the profile and logout,if not show login and register */}
       <div>
         {authinfo.isLogin ? (
           <>
