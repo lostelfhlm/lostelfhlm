@@ -1,9 +1,15 @@
-import React from 'react'
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+export interface AuthState {
+  name: string
+  isLogin: boolean
+  emailVerified: boolean
+  userinfo: any
+}
 
 // use redux toolkit to store user's info
 
-const AuthSlice = createSlice({
+const AuthSlice = createSlice<AuthState>({
   name: 'authinfo',
   initialState: {
     name: '',
@@ -12,16 +18,16 @@ const AuthSlice = createSlice({
     userinfo: '',
   },
   reducers: {
-    setname (state, action) {
+    setname (state, action: PayloadAction<string>) {
       state.name = action.payload
     },
-    setisLogin (state, action) {
+    setisLogin (state, action: PayloadAction<boolean>) {
       state.isLogin = action.payload
     },
-    setuserinfo (state, action) {
+    setuserinfo (state, action: PayloadAction<any>) {
       state.userinfo = action.payload
     },
-    setemailVerified (state, action) {
+    setemailVerified (state, action: PayloadAction<boolean>) {
       state.emailVerified = action.payload
     },
   },

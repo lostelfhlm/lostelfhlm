@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { auth, db } from '../firebase'
 import { signOut } from 'firebase/auth'
 import { updateDoc, doc } from 'firebase/firestore'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setisLogin } from '../Store/Authslice'
-import { useDispatch } from 'react-redux'
+import type { RootState, AppDispatch } from '../Store'
 import Logo from '../assets/logo/logo-no-background-nav.png'
+import styles from '../styles/Navber.module.scss'
 export const Navber = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   // logout from firebase
   const handleSignout = async () => {
     await updateDoc(doc(db, 'users', auth.currentUser.uid), {
@@ -18,18 +19,18 @@ export const Navber = () => {
     dispatch(setisLogin(false))
   }
 
-  const { authinfo } = useSelector((state) => state)
+  const { authinfo } = useSelector((state: RootState) => state)
 
   return (
-    <nav>
+    <nav className={styles.nav}>
       <div>
-        <img src={Logo} className="logo_nav"></img>
+        <img src={Logo} className={styles.logo_nav}></img>
       </div>
 
       <h3>
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? 'selected' : null)}>
+          className={({ isActive }) => (isActive ? styles.selected : undefined)}>
           Home
         </NavLink>
       </h3>
@@ -37,7 +38,7 @@ export const Navber = () => {
       <h3>
         <NavLink
           to="/personal"
-          className={({ isActive }) => (isActive ? 'selected' : null)}>
+          className={({ isActive }) => (isActive ? styles.selected : undefined)}>
           Messenger
         </NavLink>
       </h3>
@@ -45,7 +46,7 @@ export const Navber = () => {
       <h3>
         <NavLink
           to="public"
-          className={({ isActive }) => (isActive ? 'selected' : null)}>
+          className={({ isActive }) => (isActive ? styles.selected : undefined)}>
           Public
         </NavLink>
       </h3>
@@ -56,11 +57,11 @@ export const Navber = () => {
           <>
             <NavLink
               to="/profile"
-              className={({ isActive }) => (isActive ? 'selected' : null)}>
+              className={({ isActive }) => (isActive ? styles.selected : undefined)}>
               Profile
             </NavLink>
 
-            <button className="btn_nav" onClick={handleSignout}>
+            <button className={styles.btn_nav} onClick={handleSignout}>
               Logout
             </button>
           </>
@@ -68,13 +69,13 @@ export const Navber = () => {
           <>
             <NavLink
               to="register"
-              className={({ isActive }) => (isActive ? 'selected' : null)}>
+              className={({ isActive }) => (isActive ? styles.selected : undefined)}>
               Register
             </NavLink>
 
             <NavLink
               to="login"
-              className={({ isActive }) => (isActive ? 'selected' : null)}>
+              className={({ isActive }) => (isActive ? styles.selected : undefined)}>
               Login
             </NavLink>
           </>
