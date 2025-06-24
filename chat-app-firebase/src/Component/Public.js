@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { db } from '../firebase'
-import {
-  addDoc,
-  collection,
-  Timestamp,
-  getDoc,
-  doc,
-  orderBy,
-  query,
-  onSnapshot,
-  limit
-} from 'firebase/firestore'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import {
+  fetchUserData,
+  fetchPublicMessages,
+  addPublicMessage,
+  fetchOtherUserData,
+} from '../utils/publicChat'
+import {
+  PUBLIC_MESSAGE_LIMIT,
+  MESSAGE_SUCCESS_DURATION_MS,
+} from '../utils/constants'
 
 import { PublicMessageForm } from './PublicMessageForm'
 import { PublicMessage } from './PublicMessage'
 import { Otherprofile } from './Otherprofile'
-import { useNavigate } from 'react-router-dom'
 
 export const Public = () => {
   const [user, setUser] = useState([])
@@ -36,37 +34,26 @@ export const Public = () => {
 
   const handlepublic = () => {
     if (authinfo.userinfo.uid) {
-      getDoc(doc(db, 'users', authinfo.userinfo.uid)).then((docsnap) => {
-        if (docsnap.exists) {
-          setUser(docsnap.data())
+      fetchUserData(authinfo.userinfo.uid).then((data) => {
+        if (data) {
+          setUser(data)
         }
       })
     }
-    // get last 50 public messages
-    const q = query(
-      collection(db, 'publicmessages'),
-      orderBy('createAt', 'desc'), limit(50)
+    const unsubscribe = fetchPublicMessages(
+      PUBLIC_MESSAGE_LIMIT,
+      authinfo.userinfo.uid,
+      setPubmsg
     )
-
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      let messages = []
-      querySnapshot.forEach((doc) => {
-        if (doc.data().uid !== authinfo.userinfo.uid) {
-          messages.push(doc.data())
-        }
-      })
-
-      setPubmsg(messages)
-    })
     return () => unsubscribe()
   }
 
   // click a user to get the info
   const selected = (uid) => {
     if (uid) {
-      getDoc(doc(db, 'users', uid)).then((docsnap) => {
-        if (docsnap.exists) {
-          setOtherUser(docsnap.data())
+      fetchOtherUserData(uid).then((data) => {
+        if (data) {
+          setOtherUser(data)
         }
       })
     }
@@ -93,15 +80,7 @@ export const Public = () => {
       return
     }
     if (user) {
-      const { uid, name, avatar } = user
-
-      await addDoc(collection(db, 'publicmessages'), {
-        text,
-        name,
-        uid,
-        avatar: avatar || null,
-        createAt: Timestamp.fromDate(new Date()),
-      })
+      await addPublicMessage({ text, user })
       setText('')
       messageSuccess()
     }
@@ -112,7 +91,7 @@ export const Public = () => {
     setIsSend(true)
     setTimeout(() => {
       setIsSend(false)
-    }, 2000)
+    }, MESSAGE_SUCCESS_DURATION_MS)
   }
 
   return (

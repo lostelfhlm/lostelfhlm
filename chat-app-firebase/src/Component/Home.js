@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useNavigate } from 'react-router-dom'
+import { HOME_NAVIGATION_DELAY_MS } from '../utils/constants'
 import Logo from '../assets/logo/logo-no-background.png'
 import Step1 from '../assets/HomePic/step1.png'
 import Step2 from '../assets/HomePic/step2.jpg'
@@ -18,7 +19,7 @@ const Home = () => {
     setIsLeave(true)
     setTimeout(() => {
       navigate('/login')
-    }, 500)
+    }, HOME_NAVIGATION_DELAY_MS)
   }
   const handleAbout = () => {
     navigate('/about')
