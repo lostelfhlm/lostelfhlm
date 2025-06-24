@@ -9,14 +9,16 @@ export interface AuthState {
 
 // use redux toolkit to store user's info
 
-const AuthSlice = createSlice<AuthState>({
+const initialState: AuthState = {
+  name: '',
+  isLogin: true,
+  emailVerified: false,
+  userinfo: '',
+}
+
+const AuthSlice = createSlice({
   name: 'authinfo',
-  initialState: {
-    name: '',
-    isLogin: true,
-    emailVerified: false,
-    userinfo: '',
-  },
+  initialState,
   reducers: {
     setname (state, action: PayloadAction<string>) {
       state.name = action.payload
