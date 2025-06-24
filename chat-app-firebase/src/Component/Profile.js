@@ -73,7 +73,7 @@ export const Profile = () => {
     }
   }, [userimg, authinfo])
 
-  // if user click edit button , change the info box to input and value is equall to current value
+  // if user click edit button , change the info box to input and value is equal to current value
   const handleUserName = (e) => {
     setIsEdit((pre) => {
       return { ...pre, name: true }

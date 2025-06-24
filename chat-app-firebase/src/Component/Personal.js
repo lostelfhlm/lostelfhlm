@@ -120,9 +120,9 @@ export const Personal = () => {
   // if personal receive a public user' info, add it to friend list and render to the user list
   useEffect(() => {
     if (!newfriend && location.state) {
-      setNewfriend(location.state.chosed)
+      setNewfriend(location.state.selectedUid)
       setTempMsg({
-        uid: location.state.chosed,
+        uid: location.state.selectedUid,
         text: location.state.text,
         time: location.state.time,
       })

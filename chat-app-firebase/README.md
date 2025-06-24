@@ -18,7 +18,7 @@ It has main 5 pages,and user can sigin signup to send messages to other users, a
 
 ### Home Page
 
-- intrduction of this website
+- introduction of this website
 - a start button link to loginpage
 - link to about page
 - link to contact page
@@ -56,9 +56,9 @@ It has main 5 pages,and user can sigin signup to send messages to other users, a
 - personal chat will not only send text but also can send emoji or pictures
 - user can send more than one picture and the icon will show how many pictures they selected
 - click image can make it more bigger
-- cilck other user's name or avator will open their profile
+- click other user's name or avator will open their profile
 - click close svg will alert user if they want to delete this user from their friend list
-- when user reveive a messages from others, the user box will show a new info , and the lastmessage
+- when user receive a messages from others, the user box will show a new info , and the lastmessage
 - user can see if other user isOnline by a small green or red dot at user box
 - if screen size is small, the screen will only show user box or message box , click user to open a message box and click back svg to back user box
 
