@@ -1,4 +1,4 @@
-Hi, I'm HE LUMING , I have  1 year (6 months Intern) experience of Front End and I'm a  Web application Developer in japan.
+Hi, I'm HE LUMING , I have  2 year (6 months Intern) experience of Front End and I'm a  Web application Developer in japan.
 
 ## Here is what I can do
 
