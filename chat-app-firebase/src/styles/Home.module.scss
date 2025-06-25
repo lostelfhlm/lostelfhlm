@@ -1,7 +1,8 @@
 .home_container {
   $padding: 20px;
   padding: $padding;
-  background: url(/src/assets/background-image-double.jpg) center no-repeat;
+  /* Use relative path so webpack can resolve the image correctly */
+  background: url(../assets/background-image-double.jpg) center no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
